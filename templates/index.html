@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block body %}
+  <div class="row">
+    <div class="col-md-5">
+      {% with messages = get_flashed_messages()  %}
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      <div class="card card-body">
+        <form action="{{url_for('agregar_cita')}}" method="POST">
+          <div class="form-group">
+            <input type="number" class="form-control" name="boleta" placeholder="Boleta">
+          </div>
+          <div class="form-group">
+            <input type="time" class="form-control" name="hora" placeholder="Hora">
+          </div>
+          <button class="btn btn-primary btn-block">
+            Guardar 
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <table class="table table-striped table-hover table-bordered table-sm bg-white">
+        <thead>
+          <tr>
+            <td>ID</td>
+            <td>Boleta</td>
+            <td>Hora</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for ficha in fichas %}
+          <tr>
+            <td>{{ficha.0}}</td>
+            <td>{{ficha.1}}</td>
+            <td>{{ficha.2}}</td>
+            <td>
+              <a href="/ver_cita/{{ficha.1}}" class="btn btn-secondary">Ver</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

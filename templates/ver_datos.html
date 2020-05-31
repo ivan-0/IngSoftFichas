@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block body %}
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <div class="card card-body">
+        <form action="/convertir_pdf/{{alumno.1}}" method="POST">
+          <div class="form-group">
+            <div class="form-group">
+            <h3>{{alumno.0}}</h3>
+          </div>
+            <h3>{{alumno.1}}</h3>
+          </div>
+          <div class="form-group">
+            <h3>{{alumno.2}}</h3>
+          </div>
+          <div class="form-group">
+            <h3>{{ficha.2}}</h3>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">
+              Imprimir
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
